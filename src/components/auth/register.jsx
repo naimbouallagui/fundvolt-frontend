@@ -1,11 +1,10 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import InvestorReducer from "../../store/reducers/investorReducer";
 import { registerClient } from "../../store/actions/actionsClient";
+import { registerInvestor } from "../../store/actions/actionsInvestor";
 
 
 const Register = (props) => {
-  const [dispatchInv] = useReducer(InvestorReducer);
   // const alert = useAlert()
   const [user, setUser] = useState({
     username: "",
@@ -14,8 +13,8 @@ const Register = (props) => {
     role: "client",
     status: "connected",
     // company: "x",
-    address: "",
-    phone: ""
+    // address: "",
+    // phone: ""
   });
   const fieldChangedHandler = ({ target }) => {
     setUser({
@@ -30,10 +29,7 @@ const Register = (props) => {
       props.addClient(user);
     }
     else{
-      dispatchInv({
-          type: "ADD_INVESTOR",
-          payload: user
-        });
+      props.addInvestor(user);
       }
       };
   return (
@@ -165,7 +161,8 @@ const Register = (props) => {
 };
 function mapDispatchToProps(dispatch) {
   return {
-    addClient: client => {dispatch(registerClient(client));}
+    addClient: client => {dispatch(registerClient(client));},
+    addInvestor: investor => {dispatch(registerInvestor(investor));}
   };
 }
 export default connect(null,mapDispatchToProps)(Register);

@@ -1,0 +1,1 @@
+export const ADD_INVESTOR = "ADD_INVESTOR";
