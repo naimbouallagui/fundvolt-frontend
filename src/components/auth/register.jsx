@@ -1,34 +1,41 @@
 import React, { useReducer, useState } from "react";
-import ClientReducer from "../../store/reducers/clientReducer";
-import { useAlert } from "react-alert";
-const Register = () => {
-  const [state, dispatch] = useReducer(ClientReducer);
-  const alert = useAlert()
-  const [client, setClient] = useState({
+import { connect } from "react-redux";
+import InvestorReducer from "../../store/reducers/investorReducer";
+import { registerClient } from "../../store/actions/actionsClient";
+
+
+const Register = (props) => {
+  const [dispatchInv] = useReducer(InvestorReducer);
+  // const alert = useAlert()
+  const [user, setUser] = useState({
     username: "",
     email: "",
     password: "",
     role: "client",
     status: "connected",
+    // company: "x",
     address: "",
     phone: ""
   });
-  if (state) state.then(a => {console.log(a)
-    // alert.show('Register with success :) ')
-  }) 
   const fieldChangedHandler = ({ target }) => {
-    setClient({
-      ...client,
+    setUser({
+      ...user,
       [target.name]: target.value
     });
   };
   const submit = async e => {
     e.preventDefault();
-    dispatch({
-      type: "ADD_CLIENT",
-      payload: client
-    });
-  };
+    console.log(user);
+    if(user.role === 'client') {
+      props.addClient(user);
+    }
+    else{
+      dispatchInv({
+          type: "ADD_INVESTOR",
+          payload: user
+        });
+      }
+      };
   return (
     <div className="grid_6 prefix_1">
       <div className="form login-form">
@@ -156,5 +163,9 @@ const Register = () => {
     </div>
   );
 };
-
-export default Register;
+function mapDispatchToProps(dispatch) {
+  return {
+    addClient: client => {dispatch(registerClient(client));}
+  };
+}
+export default connect(null,mapDispatchToProps)(Register);
