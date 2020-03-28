@@ -1,6 +1,6 @@
 import React from "react";
 
-const Menu = () => {
+const Menu = ({ isLogged,logout }) => {
   return (
     <>
       <div className="wrap-top-menu">
@@ -13,7 +13,7 @@ const Menu = () => {
                 </li>
                 <li className="sep"></li>
                 <li>
-                  <a href="ll-pages.html">All Pages</a>
+                  <a href="ll-pages.html">Profile</a>
                 </li>
                 <li className="sep"></li>
                 <li>
@@ -39,7 +39,7 @@ const Menu = () => {
                     <a href="ndex.html">Home</a>
                   </li>
                   <li>
-                    <a href="ll-pages.html">All Pages</a>
+                    <a href="ll-pages.html">Profile</a>
                   </li>
                   <li>
                     <a href="ow-it-work.html">Help</a>
@@ -52,10 +52,7 @@ const Menu = () => {
             </nav>
             <div className="top-message clearfix">
               <i className="icon iFolder"></i>
-              <span className="txt-message">
-                Nulla egestas nulla ac diam ultricies id viverra nisi
-                adipiscing.
-              </span>
+              <span className="txt-message">Don't Hesitate To Be With Us</span>
               <i className="icon iX"></i>
               <div className="clear"></div>
             </div>
@@ -70,15 +67,31 @@ const Menu = () => {
         <div className="grid_12 header-content">
           <div id="sys_header_right" className="header-right">
             <div className="account-panel">
-              <button className="btn btn-red sys_show_popup_login">
-                Register
-              </button>
-              <a
-                href="#zdfzedfez"
-                className="btn btn-black sys_show_popup_login"
-              >
-                Login
-              </a>
+              {isLogged ? (
+                <a
+                  href="#zdfzedfez"
+                  onClick={logout}
+                  className="btn btn-black"
+                >
+                  Logout
+                </a>
+              ) : (
+                [
+                  <button
+                    key="registerBtn"
+                    className="btn btn-red sys_show_popup_login"
+                  >
+                    Register
+                  </button>,
+                  <a
+                    key="loginBtn"
+                    href="#zdfzedfez"
+                    className="btn btn-black sys_show_popup_login"
+                  >
+                    Login
+                  </a>
+                ]
+              )}
             </div>
             <div className="form-search">
               <form action="#">
