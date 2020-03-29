@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const Menu = ({ isLogged,logout }) => {
   return (
@@ -68,13 +69,13 @@ const Menu = ({ isLogged,logout }) => {
           <div id="sys_header_right" className="header-right">
             <div className="account-panel">
               {isLogged ? (
-                <a
-                  href="#zdfzedfez"
+                <Link
+                  to="/home"
                   onClick={logout}
                   className="btn btn-black"
                 >
                   Logout
-                </a>
+                </Link>
               ) : (
                 [
                   <button
@@ -114,9 +115,9 @@ const Menu = ({ isLogged,logout }) => {
           </div>
           <div className="header-left">
             <h1 id="logo">
-              <a href="ndex.html">
+              <Link to="/home">
                 <img src="./assets/images/logo.png" alt="$SITE_NAME" />
-              </a>
+              </Link>
             </h1>
             <div className="main-nav clearfix">
               <div className="nav-item">
@@ -127,9 +128,9 @@ const Menu = ({ isLogged,logout }) => {
               </div>
               <span className="sep"></span>
               <div className="nav-item">
-                <a href="zaedzad" className="nav-title">
+                <NavLink to="/home/addproject" className="nav-title" exact activeClassName='active'>
                   Start
-                </a>
+                </NavLink>
                 <p className="rs nav-description">Your Project</p>
               </div>
             </div>

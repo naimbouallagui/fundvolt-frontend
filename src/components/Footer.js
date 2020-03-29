@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -56,7 +57,7 @@ const Footer = () => {
         <div className="copyright">
             <div className="container_12">
                 <div className="grid_12">
-                    <a className="logo-footer" href="index.html"><img src="./assets/images/logo-2.png" alt="$SITE_NAME"/></a>
+                    <Link to="/home" className="logo-footer" ><img src="./assets/images/logo-2.png" alt="$SITE_NAME"/></Link>
                     <p className="rs term-privacy">
                         <a className="fw-b be-fc-orange p-2" href="single.html">Terms & Conditions</a>
                         <span className="sep">/</span>

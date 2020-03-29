@@ -14,6 +14,3 @@ const AuthenticationReducer = (stateAuth = null, action) => {
 };
 
 export default AuthenticationReducer;
-
-// Login(res: connected user )
-// logout( logged user == null)

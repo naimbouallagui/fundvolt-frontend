@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { authentication } from "../../store/actions/auth/actionsAuth";
-import { Redirect } from "react-router-dom";
 
 const Login = ({ login, loginResponse }) => {
   const [user, setUser] = useState({
@@ -28,8 +27,7 @@ const Login = ({ login, loginResponse }) => {
     setLoading(true);
     login(user);
   };
-  // if (loginResponse && loginResponse.error === false)
-  //   return <Redirect to="/home" />;
+  
   return (
     <>
       <div className="grid_4">

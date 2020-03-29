@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LIST_PROJECT } from './typesProject';
+import { LIST_PROJECT, ADD_PROJECT } from './typesProject';
 
 export const listProjects = () => {
   
@@ -14,3 +14,16 @@ export const listProjects = () => {
         });
     };
   };
+
+  
+export const addProject = (data) => {
+  return (dispatch) => {
+    return axios.post(`http://localhost:5000/project/addproject`, data)
+      .then(response => {
+        dispatch({type: ADD_PROJECT, payload: response.data});
+      })
+      .catch(error => {
+        throw(error);
+      });
+  };
+};

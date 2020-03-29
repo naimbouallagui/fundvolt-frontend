@@ -8,7 +8,6 @@ import { LOGOUT } from '../../store/actions/auth/typesAuth'
 function Nav(props) {
   
     const isLogged=props.auth?true:false
-    console.log(props.auth,isLogged);
 
     return (
         <header id="header">
