@@ -8,6 +8,7 @@ import Nav from "./components/nav";
 import Footer from "./components/Footer";
 import AddProject from "./containers/project/addProject";
 import Alert from "./components/Alert";
+import List from "./containers/project/list";
 
 function App() {
   
@@ -20,6 +21,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact path="/project">
+              <List />
             </Route>
             <Route exact path="/project/addproject">
               <AddProject />

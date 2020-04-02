@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { listProjects } from "../store/actions/project";
+import { Link } from "react-router-dom";
 
 const Home = ({ projects, getAllProjects }) => {
   useEffect(() => {
@@ -382,9 +383,9 @@ const Home = ({ projects, getAllProjects }) => {
         <div className="container_12">
           <div className="grid_12 wrap-title">
             <h2 className="common-title">Popular</h2>
-            <a className="be-fc-orange" href="category.html">
+            <Link to="/project" className="be-fc-orange">
               View all
-            </a>
+            </Link>
           </div>
           <div className="clear"></div>
           <div className="lst-popular-project clearfix">
