@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { addProject } from "../../store/actions/project/actionsProject";
-import { useAlert } from "react-alert";
+import {
+  addProject,
+  uploadImage
+} from "../../store/actions/project";
+import { Redirect } from "react-router-dom";
 
-const AddProject = ({ auth, newProject }) => {
+const AddProject = ({ auth, newProject, upload, file, alertModal }) => {
   const [project, setProject] = useState({
     title: "",
     category: "",
     description: "",
     location: "",
     price: "",
-    client: auth.data._id
+    img: "",
+    client: auth ? auth.data._id : null
   });
-  const alert = useAlert();
+  const [image, setImage] = useState(null);
 
   const fieldChangeHandler = ({ target }) => {
     setProject({
@@ -21,11 +25,31 @@ const AddProject = ({ auth, newProject }) => {
     });
   };
 
+  useEffect(() => {
+    if (image) upload(image);
+  }, [image, upload]);
+  useEffect(() => {
+    if (file) {
+      const url = (file || "").replace(/\\/g, `/`);
+      setProject({
+        ...project,
+        // img: file
+        img: url
+      });
+    }
+  }, [file]);
+
+  const fileUpload = e => {
+    e.preventDefault();
+    setImage(e.target.files[0]);
+  };
   const submit = e => {
+    console.log(project);
     e.preventDefault();
     newProject(project);
-    alert.show("Oh look, you have created your project :) ");
   };
+
+  if (!auth) return <Redirect to="/" />;
   return (
     <div className="layout-2cols">
       <div className="content grid_8">
@@ -118,11 +142,15 @@ const AddProject = ({ auth, newProject }) => {
                         </div>
                       </div>
 
-                      {/* <p className="wrap-btn-submit rs ta-r">
-                        <button className="btn btn-red btn-submit-all">
-                          Upload the project
-                        </button>
-                      </p> */}
+                      <p className="wrap-btn-submit rs ta-r">
+                        <input
+                          onChange={fileUpload}
+                          className="btn btn-gray"
+                          type="file"
+                          name="img"
+                        />
+                      </p>
+                  
                       <button
                         onClick={submit}
                         className="btn btn-red btn-submit-all"
@@ -145,11 +173,16 @@ const AddProject = ({ auth, newProject }) => {
 };
 
 const mapStateToProps = state => ({
-  auth: state.authentication
+  auth: state.authentication,
+  file: state.files,
+  alertModal: state.alert
 });
 const mapDispatchToProps = dispatch => ({
   newProject: project => {
     dispatch(addProject(project));
+  },
+  upload: img => {
+    dispatch(uploadImage(img));
   }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(AddProject);

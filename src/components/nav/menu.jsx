@@ -70,7 +70,7 @@ const Menu = ({ isLogged,logout }) => {
             <div className="account-panel">
               {isLogged ? (
                 <Link
-                  to="/home"
+                  to="/"
                   onClick={logout}
                   className="btn btn-black"
                 >
@@ -115,7 +115,7 @@ const Menu = ({ isLogged,logout }) => {
           </div>
           <div className="header-left">
             <h1 id="logo">
-              <Link to="/home">
+              <Link to="/">
                 <img src="./assets/images/logo.png" alt="$SITE_NAME" />
               </Link>
             </h1>
@@ -128,7 +128,7 @@ const Menu = ({ isLogged,logout }) => {
               </div>
               <span className="sep"></span>
               <div className="nav-item">
-                <NavLink to="/home/addproject" className="nav-title" exact activeClassName='active'>
+                <NavLink to="/project/addproject" className="nav-title" exact activeClassName='active'>
                   Start
                 </NavLink>
                 <p className="rs nav-description">Your Project</p>

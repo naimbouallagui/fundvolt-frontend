@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_INVESTOR } from './typesInvestor';
+import { ADD_INVESTOR } from './types';
 
 export const registerInvestor = (data) => {
   return (dispatch) => {

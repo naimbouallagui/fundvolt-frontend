@@ -6,7 +6,6 @@ export const authentication = data => {
     return axios
       .post(`http://localhost:5000/login`, data)
       .then(response => {
-        // dispatch({ type: LOGIN, payload: response.data });
         if (response.data) {
           dispatch({
             type: LOGIN,

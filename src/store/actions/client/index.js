@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_CLIENT } from './typesClient';
+import { ADD_CLIENT } from './types';
 
 export const registerClient = (data) => {
   return (dispatch) => {

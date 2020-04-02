@@ -1,4 +1,4 @@
-import { ADD_INVESTOR } from "../actions/typesInvestor";
+import { ADD_INVESTOR } from "../actions/investor/types";
 
 const InvestorReducer = (stateInvestor = [], action) => {
   switch (action.type) {

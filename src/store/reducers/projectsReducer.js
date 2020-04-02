@@ -1,4 +1,4 @@
-import { LIST_PROJECT, ADD_PROJECT } from "../actions/project/typesProject";
+import { LIST_PROJECT, ADD_PROJECT } from "../actions/project/types";
 
 const ProjectsReducer = (stateProject = [], action) => {
   switch (action.type) {

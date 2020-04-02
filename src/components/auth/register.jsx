@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { registerClient } from "../../store/actions/actionsClient";
-import { registerInvestor } from "../../store/actions/actionsInvestor";
+import { registerClient } from "../../store/actions/client/index";
+import { registerInvestor } from "../../store/actions/investor/index";
 
 
 const Register = (props) => {

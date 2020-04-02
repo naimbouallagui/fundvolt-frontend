@@ -7,18 +7,21 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./components/nav";
 import Footer from "./components/Footer";
 import AddProject from "./containers/project/addProject";
+import Alert from "./components/Alert";
 
 function App() {
+  
   return (
     <Provider store={store}>
+      <Alert/>
       <div id="wrapper">
         <Router>
         <Nav />
           <Switch>
-            <Route exact path="/home">
+            <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/home/addproject">
+            <Route exact path="/project/addproject">
               <AddProject />
             </Route>
             <Route component={NoMatchPage} />

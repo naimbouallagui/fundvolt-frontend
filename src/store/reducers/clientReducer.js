@@ -1,4 +1,4 @@
-import { ADD_CLIENT} from '../actions/typesClient';
+import { ADD_CLIENT} from '../actions/client/types';
 
 const ClientReducer = (stateClient = [], action) => {
   switch (action.type) {

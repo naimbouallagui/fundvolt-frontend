@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { listProjects } from "../store/actions/project/actionsProject";
+import { listProjects } from "../store/actions/project";
 
 const Home = ({ projects, getAllProjects }) => {
   useEffect(() => {
     getAllProjects();
-  },[]);
+  }, [getAllProjects]);
   return (
     <>
       <div id="home-slider">
@@ -388,64 +388,64 @@ const Home = ({ projects, getAllProjects }) => {
           </div>
           <div className="clear"></div>
           <div className="lst-popular-project clearfix">
-            {projects.map(project => (
-            <div className="grid_3" key={project._id}>
-              <div className="project-short sml-thumb">
-                <div className="top-project-info">
-                  <div className="content-info-short clearfix">
-                    <a href="#aaa" className="thumb-img">
-                      <img src="images/ex/th-292x204-1.jpg" alt="$TITLE" />
-                    </a>
-                    <div className="wrap-short-detail">
-                      <h3 className="rs acticle-title">
-                        <a className="be-fc-orange" href="project.html">
-                          {project.title}
-                        </a>
-                      </h3>
-                      <p className="rs tiny-desc">
-                        by
-                        <a
-                          href="profile.html"
-                          className="fw-b fc-gray be-fc-orange"
-                        >
-                          {/* {project.client.username} */}
-                        </a>
-                      </p>
-                      <p className="rs title-description">
-                      {project.description}
-                      </p>
-                      <p className="rs project-location">
-                        <i className="icon iLocation"></i>
-                        {project.location}
-                      </p>
+            {projects.slice(0, 4).map(project => (
+              <div className="grid_3" key={project._id}>
+                <div className="project-short sml-thumb">
+                  <div className="top-project-info">
+                    <div className="content-info-short clearfix">
+                      <a href="#aaa" className="thumb-img">
+                        <img src="images/ex/th-292x204-1.jpg" alt="$TITLE" />
+                      </a>
+                      <div className="wrap-short-detail">
+                        <h3 className="rs acticle-title">
+                          <a className="be-fc-orange" href="project.html">
+                            {project.title}
+                          </a>
+                        </h3>
+                        <p className="rs tiny-desc">
+                          by
+                          <a
+                            href="profile.html"
+                            className="fw-b fc-gray be-fc-orange"
+                          >
+                            {/* {project.client.username} */}
+                          </a>
+                        </p>
+                        <p className="rs title-description">
+                          {project.description}
+                        </p>
+                        <p className="rs project-location">
+                          <i className="icon iLocation"></i>
+                          {project.location}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="bottom-project-info clearfix">
-                  <div className="line-progress">
-                    <div className="bg-progress">
-                      <span style={{ width: "50%" }}></span>
+                  <div className="bottom-project-info clearfix">
+                    <div className="line-progress">
+                      <div className="bg-progress">
+                        <span style={{ width: "50%" }}></span>
+                      </div>
                     </div>
-                  </div>
-                  <div className="group-fee clearfix">
-                    <div className="fee-item">
-                      <p className="rs lbl">Funded</p>
-                      <span className="val">50%</span>
-                    </div>
-                    <div className="sep"></div>
-                    <div className="fee-item">
-                      <p className="rs lbl">Pledged</p>
-                      <span className="val">$38,000</span>
-                    </div>
-                    <div className="sep"></div>
-                    <div className="fee-item">
-                      <p className="rs lbl">Days Left</p>
-                      <span className="val">25</span>
+                    <div className="group-fee clearfix">
+                      <div className="fee-item">
+                        <p className="rs lbl">Funded</p>
+                        <span className="val">50%</span>
+                      </div>
+                      <div className="sep"></div>
+                      <div className="fee-item">
+                        <p className="rs lbl">Pledged</p>
+                        <span className="val">$38,000</span>
+                      </div>
+                      <div className="sep"></div>
+                      <div className="fee-item">
+                        <p className="rs lbl">Days Left</p>
+                        <span className="val">25</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
             ))}
           </div>
         </div>
