@@ -395,7 +395,7 @@ const Home = ({ projects, getAllProjects }) => {
                   <div className="top-project-info">
                     <div className="content-info-short clearfix">
                       <a href="#aaa" className="thumb-img">
-                        <img src="images/ex/th-292x204-1.jpg" alt="$TITLE" />
+                        <img src={"http://localhost:5000/"+project.img} alt={project.title} />
                       </a>
                       <div className="wrap-short-detail">
                         <h3 className="rs acticle-title">
@@ -412,7 +412,7 @@ const Home = ({ projects, getAllProjects }) => {
                             {/* {project.client.username} */}
                           </a>
                         </p>
-                        <p className="rs title-description">
+                        <p className="rs title-description ellipsis">
                           {project.description}
                         </p>
                         <p className="rs project-location">
