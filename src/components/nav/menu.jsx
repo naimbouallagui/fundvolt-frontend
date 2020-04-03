@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
-const Menu = ({ isLogged,logout }) => {
+const Menu = ({ isLogged,logout,isClient }) => {
   return (
     <>
       <div className="wrap-top-menu">
@@ -127,12 +127,14 @@ const Menu = ({ isLogged,logout }) => {
                 <p className="rs nav-description">Great Projects</p>
               </div>
               <span className="sep"></span>
+              {isLogged && isClient &&
               <div className="nav-item">
                 <NavLink to="/project/addproject" className="nav-title" exact activeClassName='active'>
                   Start
                 </NavLink>
                 <p className="rs nav-description">Your Project</p>
               </div>
+            }
             </div>
           </div>
         </div>

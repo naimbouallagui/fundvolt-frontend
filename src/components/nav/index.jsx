@@ -8,11 +8,11 @@ import { LOGOUT } from '../../store/actions/auth/typesAuth'
 function Nav(props) {
   
     const isLogged=props.auth?true:false
-    const isInvestor=props.auth && props.auth.type==="investor"
+    const isClient=props.auth && props.auth.data.role==="client"
 
     return (
         <header id="header">
-        <Menu isLogged={isLogged} logout={props.logout} isInvestor={isInvestor}/>
+        <Menu isLogged={isLogged} logout={props.logout} isClient={isClient}/>
         {!isLogged && <div className="popup-common" id="sys_popup_common">
           <div className="overlay-bl-bg"></div>
           <div className="container_12 pop-content">
